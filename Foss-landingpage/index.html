@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOSSMeet'24</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background-color: #000000; 
+      color: #EE7A01; 
+    }
+  
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 10px;
+      z-index: 1000; 
+    }
+  
+    .navbar a {
+      color: white !important; 
+      transition: color 0.3s ease; 
+    }
+  
+    .navbar a:hover {
+      color: #F7A245 !important; 
+    }
+  
+    #typed-output {
+      font-size: 100px;
+      font-family: 'Orbitron', sans-serif;
+      color: #EE7A01;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #000000;
+    }
+  
+    @media (max-width: 768px) {
+      #typed-output {
+        font-size: 50px; 
+      }
+    }
+  
+    .hidden {
+      opacity: 0;
+    }
+  
+    .content {
+      padding: 20px;
+      margin-top: 100px;
+      margin-bottom: 100px;
+      color: #EE7A01;
+    }
+  
+    .navbar span {
+      color: white !important; 
+    }
+  
+    .navbar span:hover {
+      color: #F7A245 !important; 
+    }
+
+    .fs-5 {
+    color: #f8f5f2; 
+  }
+    .display-5{
+      color:#f4b571;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out; 
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    .fade-out {
+      opacity: 1;
+      transition: opacity 1.5s ease-in-out; 
+    }
+
+    .fade-out.hidden {
+      opacity: 0;
+    }
+
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .image-gallery img {
+      max-width: 100%;
+      height: auto;
+      max-height: 150px; 
+      object-fit: cover; 
+      cursor: pointer; 
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 50%;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 800px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .close {
+      color: #fff;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .events-section {
+    text-align: center;
+    padding: 20px;
+  }
+
+  .events-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .event-column {
+    flex: 0 0 100%; 
+    max-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    margin-bottom: 20px; 
+  }
+
+  .event-item {
+    color: #f7efe6;
+    border-bottom: 1px solid #f7efe6;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: 768px) {
+    .event-column {
+      flex: 0 0 48%; 
+      max-width: 48%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .event-column {
+      flex: 0 0 30%; 
+      max-width: 30%;
+    }
+  }
+
+  .nav-link:hover {
+        color: #F7A245 !important;
+    }
+
+  </style>
+  
+</head>
+<body>
+  <div class="navbar d-flex justify-content-between align-items-center px-3 py-2" style="background-color: #151515;">
+    <a href="/" class="text-decoration-none text-white">
+        <span class="fs-4">FOSSMeet'24</span>
+        </a>
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="#events" class="nav-link">Schedule</a></li>
+            <li class="nav-item"><a href="#faqs-section" class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a href="#gallery-section" class="nav-link">Gallery</a></li>
+        </ul>
+  </div>
+    <h1 id="typed-output"></h1>
+      <div class=" text-secondary px-4 py-5 text-center fade-in" id="section1">
+        <div class="py-5">
+          <h1 class="display-5 ">What is FOSSMeet?</h1>
+          <div class="col-lg-9 mx-auto">
+            <p class="fs-5 mb-4">FOSSMeet is an event on Free and Open Source Software, conducted by the FOSSCell of National Institute of Technology, Calicut to create awareness about and encourage the use of free and open-source software. The event includes a wide array of workshops, talks and a lot more. This is to encourage the utilization of open-source software in various fields.
+
+              The event hopes to encompass talks and discussions dealing with current trends in open source software and hardware, opportunities to contribute to the community.</p>
+          </div>
+        </div>
+      <div class=" text-secondary px-4 py-5 text-center fade-out hidden" id="section2">
+        <div class="py-5">
+          <h1 class="display-5 ">Why FOSS?</h1>
+          <div class="col-lg-9 mx-auto">
+            <p class="fs-5 mb-4">Embracing Free and Open Source Software (FOSS) bolsters cybersecurity through transparent code visibility, rapid vulnerability mitigation, and reduced reliance on closed systems. Its cost-efficiency and adaptability empower users, promoting innovation and robust security. FOSS serves as a strategic choice for those prioritizing data protection, privacy, and a collaborative approach to security challenges, making it a cornerstone in fostering digital resilience and a safer digital landscape. </p>
+          </div>
+        </div>
+      </div>
+    <div class="content">
+        <h1>Prominent Open Source Organisations</h1>
+    </div>
+    
+    <div class="container marketing">
+
+      <div class="row">
+        <div class="col-lg-4">
+          <img src="images/linux.png" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Image Placeholder">
+          <h2 class="fw-normal" style="color: #f7efe6; margin-bottom: 15px; margin-top:20px;"><a href="https://www.linux.org/" class="nav-link" target="_blank">Linux</a></h2>
+          <p style="color: #8d8c8c ;">An open-source OS, Linux powers servers and embedded systems, offering stability and security, contributing to its widespread use in various computing environments.</p>
+
+        </div>
+        <div class="col-lg-4">
+          <img src="images/docker.png" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Image Placeholder">
+          <h2 class="fw-normal" style="color: #f7efe6; margin-bottom: 15px; margin-top:20px"><a href="https://www.docker.com/" class="nav-link" target="_blank">Docker</a></h2>
+          <p style="color: #8d8c8c">Docker transforms software deployment with containerization, enabling consistent and efficient application packaging, shipping, and deployment across diverse computing environments.</p>
+
+        </div>
+        <div class="col-lg-4">
+          <img src="images/github.png" class="bd-placeholder-img rounded-circle" width="140" height="140" alt="Image Placeholder">
+          <h2 class="fw-normal" style="color: #f7efe6; margin-bottom: 15px; margin-top:20px"><a href="https://github.com/" class="nav-link" target="_blank">Github</a></h2>
+          <p style="color:#8d8c8c"> As a collaborative platform, GitHub supports open-source development, offering version control, issue tracking, and collaboration tools, fostering community-driven innovation and code sharing.</p>
+        </div>
+    </div>
+
+      <div id ="events" class="events-section">
+        <h1 style="color:#F7A245; margin-top: 150px; margin-bottom: 100px;">
+          <span style=" padding: 10px; padding-left: 30px; padding-right: 30px; border-radius: 15px;">Schedule</span>
+        </h1>  
+        <div class="events-container">
+          <div class="event-column">
+            <div style="color: #fff; font-size:xx-large;">March 15</div>
+            <div class="day">FRIDAY</div>
+            <div class="event-item"><span style="color: #F7A245;">10:00 am</span><br>Registration and Welcome</div>
+            <div class="event-item"><span style="color: #F7A245;">2:00 pm</span><br>Debian 101</div>
+            <div class="event-item"><span style="color: #F7A245;">5:00 pm</span><br>Linux install fest</div>
+          </div>
+          <div class="event-column">
+            <div style="color: #fff; font-size:xx-large;">March 16</div>
+            <div class="day">SATURDAY</div>
+            <div class="event-item"><span style="color: #F7A245;">10:00 am</span><br>Reclaim Hackathon</div>
+            <div class="event-item"><span style="color: #F7A245;">2:00 pm</span><br>Expert Talk</div>
+            <div class="event-item"><span style="color: #F7A245;">5:00 pm</span><br>Project showcases</div>
+          </div>
+          <div class="event-column">
+            <div style="color: #fff; font-size:xx-large;">March 17</div>
+            <div class="day">SUNDAY</div>
+            <div class="event-item"><span style="color: #F7A245;">10:00 am</span><br>Panel Discussion</div>
+            <div class="event-item"><span style="color: #F7A245;">2:00 pm</span><br>Workshop</div>
+            <div class="event-item"><span style="color: #F7A245;">5:00 pm</span><br>Closing ceremony</div>
+          </div>
+        </div>
+      </div>
+      
+
+      <div id="faqs-section" class="col">
+        <div class="card" style="margin-top: 200px; background-color: #fff; color: #D45103;">
+          <div class="card-body">
+            <h1 class="card-title">FAQs</h1>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" style="background-color: #000000; border: 1px solid #fff; color: #F7A245;"><h4>Who can attend FOSSMeet?</h4><p style="color:#fff">FOSSMeet is open to anyone interested in Free and Open Source Software, including students, developers, educators, and industry professionals.</p></li>
+            <li class="list-group-item" style="background-color: #000000; border: 1px solid #fff; color: #F7A245;"><h4>How can I register for FOSSMeet?</h4><p style="color:#fff">Registration details are usually provided on the official FOSSMeet website. Participants can register online by filling out the registration form.</p></li>
+            <li class="list-group-item" style="background-color: #000000; border: 1px solid #fff; color: #F7A245;"><h4>Is there a registration fee?</h4><p style="color:#fff">Some FOSS events may have a registration fee to cover organizational costs. Check the event's website or contact the organizers for information on fees and any available discounts.</p></li>
+            <li class="list-group-item" style="background-color: #000000; border: 1px solid #fff; color: #F7A245;"><h4>Can I propose a session or workshop?</h4><p style="color:#fff">Many FOSSMeet events welcome session and workshop proposals. Check the event's call for proposals (CFP) for guidelines on submitting your ideas.</p></li>
+            <li class="list-group-item" style="background-color: #000000; border: 1px solid #fff; color: #F7A245;"><h4>Can I showcase my open source project at FOSSMeet?</h4><p style="color:#fff">Many FOSSMeet events provide space for showcasing projects. If you have an open source project, inquire about exhibition or demo opportunities.</p></li>
+            <li class="list-group-item" style="background-color: #000000; border: 1px solid #fff; color: #F7A245;"><h4>How can I stay updated on FOSSMeet announcements?</h4><p style="color:#fff">Follow the official FOSSMeet website, social media channels, and mailing lists for the latest announcements, schedule updates, and important information.</p></li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div id="gallery-section" class="content">
+        <h1 style="margin-bottom: 50px;">Image Gallery</h1>
+        <div class="image-gallery">
+          <img src="images/fm1.webp" alt="Image 1" onclick="openModal('images/fm1.webp')">
+          <img src="images/fm11.webp" alt="Image 2" onclick="openModal('images/fm11.webp')">
+          <img src="images/fm3.webp" alt="Image 3" onclick="openModal('images/fm3.webp')">
+          <img src="images/fm4.webp" alt="Image 4" onclick="openModal('images/fm4.webp')">
+          <img src="images/fm5.webp" alt="Image 5" onclick="openModal('images/fm5.webp')">
+          <img src="images/fm6.webp" alt="Image 6" onclick="openModal('images/fm6.webp')">
+          <img src="images/fm7.webp" alt="Image 7" onclick="openModal('images/fm7.webp')">
+          <img src="images/fm8.webp" alt="Image 8" onclick="openModal('images/fm8.webp')">
+          <img src="images/fm9.webp" alt="Image 9" onclick="openModal('images/fm9.webp')">
+          <img src="images/fm10.webp" alt="Image 10" onclick="openModal('images/fm10.webp')">
+          <img src="images/fm12.webp" alt="Image 11" onclick="openModal('images/fm12.webp')">
+          <img src="images/fm13.webp" alt="Image 12" onclick="openModal('images/fm13.webp')">
+          <img src="images/fm14.webp" alt="Image 13" onclick="openModal('images/fm14.webp')">
+          <img src="images/fm15.webp" alt="Image 14" onclick="openModal('images/fm15.webp')">
+          <img src="images/fm16.webp" alt="Image 15" onclick="openModal('images/fm16.webp')">
+          <img src="images/fm17.webp" alt="Image 16" onclick="openModal('images/fm17.webp')">
+        </div>
+      </div>
+    
+      <div id="imageModal" class="modal" onclick="closeModal()">
+        <img class="modal-content" id="modalImage">
+      </div>
+
+
+      <footer class="py-3 my-4">
+        <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+          <li class="nav-item"><a href="https://nitc.ac.in/" target="_blank" class="nav-link px-2 text-white">NITC</a></li>
+          <li class="nav-item"><a href="https://www.fosscell.org/" target="_blank" class="nav-link px-2 text-white">FOSSCell</a></li>
+          <li class="nav-item"><a href="https://t.me/foss_meet" target="_blank" class="nav-link px-2 text-white">Telegram</a></li>
+        </ul>
+        <a href="https://www.fossmeet.net/contact" target="_blank" class="nav-link px-2 text-white">Contact us</a></li>
+      </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-eJwibIElPJo/lp2FF+GcdV97c+U9ScQkHoT7vzqu2RBdY6fXqGJ4P6vpTjIqszKT" crossorigin="anonymous"></script>
+    <script src="/index.js"></script>
+</body>
+</html>
